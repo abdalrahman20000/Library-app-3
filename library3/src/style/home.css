@@ -23,3 +23,11 @@ main {
     text-align: end;
     margin: 10px;
   }
+
+
+  .container_{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }

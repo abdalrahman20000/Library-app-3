@@ -1,13 +1,31 @@
 
 
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 function Header_() {
 
-
-    
-
     const signed = sessionStorage.getItem("signed");
+
+
+    const [is_signed, set_sign] = useState(false);
+
+
+
+    const handle_sign = () => {
+
+        set_sign(sessionStorage.setItem("signed", false));
+
+
+    };
+
+    const handle_out = () => {
+
+        set_sign(sessionStorage.setItem("signed", true));
+
+
+    };
+
     // console.log(signed);
     return (
         <header>
@@ -28,7 +46,7 @@ function Header_() {
             </nav>
 
             <div className="icons">
-                {sessionStorage.getItem("signed") ? (<Link to="/signUp" onClick={sessionStorage.setItem("signed", false)}>Log out</Link>) : (<Link to="/signUp">Sign up</Link>)}
+                {is_signed ? (<Link onClick={handle_sign} to="/signUp">Log out</Link>) : (<Link to="/signUp" onClick={handle_out}>Sign up</Link>)}
             </div>
         </header>
     )
